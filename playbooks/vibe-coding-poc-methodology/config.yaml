@@ -1,0 +1,224 @@
+# POC Configuration File
+# Customize for your organization
+
+poc:
+  name: "Vibe Coding Evaluation POC"
+  organization: "Your Organization"
+  version: "1.0"
+  start_date: "2024-01-15"
+  end_date: "2024-01-29"
+  
+participants:
+  minimum: 6
+  maximum: 12
+  experience_levels:
+    - junior: 2-5 years
+    - mid: 5-10 years  
+    - senior: 10+ years
+    
+tasks:
+  time_limit_minutes: 90
+  categories:
+    performance:
+      weight: 0.28  # Based on incident frequency
+      examples:
+        - "PERF-001: Hidden O(n³) Performance Killer"
+        - "PERF-002: Cache Stampede Resolution"
+        - "PERF-003: Database Query Optimization"
+    distributed:
+      weight: 0.22
+      examples:
+        - "DIST-001: Service Timeout Cascade"
+        - "DIST-002: Distributed Transaction Trap"
+        - "DIST-003: Message Queue Deadlock"
+    refactoring:
+      weight: 0.22
+      examples:
+        - "LEGACY-001: Monolith Authentication Module"
+        - "LEGACY-002: Payment Processing Spaghetti"
+        - "LEGACY-003: Report Generation Monster"
+    debugging:
+      weight: 0.18
+      examples:
+        - "DEBUG-001: Midnight Timeout Mystery"
+        - "DEBUG-002: Memory Leak Hunt"
+        - "DEBUG-003: Race Condition Detective"
+    security:
+      weight: 0.10
+      examples:
+        - "SEC-001: Subtle SQL Injection"
+        - "SEC-002: JWT Implementation Flaw"
+        - "SEC-003: CORS Misconfiguration"
+
+tools:
+  assisted:
+    github_copilot:
+      version: "latest"
+      configuration:
+        suggestions: "enabled"
+        chat: "disabled"
+        context_window: 50
+    cursor:
+      version: "0.42.0"
+      configuration:
+        autocomplete: "enabled"
+        ai_chat: "disabled"
+        completion_depth: "single_line"
+    tabnine:
+      version: "latest"
+      configuration:
+        mode: "standard"
+        cloud_suggestions: "enabled"
+        
+  conversational:
+    claude:
+      model: "claude-3-opus-20240229"
+      configuration:
+        temperature: 0.7
+        max_tokens: 4096
+        artifacts: "enabled"
+        file_uploads: "enabled"
+    chatgpt:
+      model: "gpt-4-turbo-preview"
+      configuration:
+        temperature: 0.7
+        max_tokens: 4096
+        code_interpreter: "enabled"
+    gemini:
+      model: "gemini-1.5-pro"
+      configuration:
+        temperature: 0.7
+        max_tokens: 4096
+        code_execution: "enabled"
+
+metrics:
+  quantitative:
+    - name: "duration_seconds"
+      type: "continuous"
+      required: true
+    - name: "test_coverage"
+      type: "percentage"
+      required: true
+    - name: "cyclomatic_complexity"
+      type: "integer"
+      required: false
+    - name: "edge_cases_found"
+      type: "count"
+      required: true
+    - name: "commits_count"
+      type: "count"
+      required: false
+    - name: "review_score"
+      type: "integer"
+      range: [0, 120]
+      required: true
+      
+  qualitative:
+    - name: "confidence_rating"
+      type: "likert"
+      scale: 5
+      required: true
+    - name: "cognitive_load_rating"
+      type: "likert"
+      scale: 5
+      required: true
+    - name: "tool_helpful_rating"
+      type: "likert"
+      scale: 5
+      required: true
+    - name: "would_use_production"
+      type: "boolean"
+      required: true
+    - name: "satisfaction_rating"
+      type: "likert"
+      scale: 5
+      required: true
+
+analysis:
+  outlier_removal:
+    method: "percentile"  # or "iqr"
+    percentile_bounds: [5, 95]
+    iqr_multiplier: 1.5
+    
+  statistical_tests:
+    paired_comparison: "t_test"  # or "wilcoxon"
+    significance_level: 0.05
+    confidence_interval: 0.95
+    bootstrap_iterations: 10000
+    
+  decision_criteria:
+    time_improvement_threshold: 0.15  # 15%
+    quality_degradation_tolerance: 0.05  # 5%
+    minimum_effect_size: 0.5  # Cohen's d
+    required_criteria: 3  # out of 5
+
+reporting:
+  formats:
+    - "html"
+    - "pdf"
+    - "markdown"
+    - "json"
+    
+  visualizations:
+    - "paired_comparison_boxplot"
+    - "category_performance_heatmap"
+    - "time_distribution_histogram"
+    - "correlation_matrix"
+    - "decision_tree"
+    
+  distribution:
+    - email: "engineering-leaders@company.com"
+    - slack: "#eng-effectiveness"
+    - confluence: "https://wiki.company.com/poc-results"
+
+infrastructure:
+  docker:
+    registry: "docker.io/your-org"
+    network: "poc-network"
+    volumes:
+      - "postgres_data"
+      - "redis_data"
+      - "workspace_data"
+      
+  database:
+    type: "postgresql"
+    host: "localhost"
+    port: 5432
+    name: "poc_results"
+    
+  monitoring:
+    prometheus:
+      enabled: true
+      port: 9090
+    grafana:
+      enabled: true
+      port: 3000
+    jaeger:
+      enabled: false
+      port: 16686
+
+security:
+  data_handling:
+    anonymize_participants: true
+    hash_algorithm: "sha256"
+    retention_days: 90
+    
+  code_handling:
+    scan_for_secrets: true
+    remove_api_keys: true
+    sanitize_urls: true
+    
+  access_control:
+    require_authentication: false
+    allowed_ips: []
+    
+compliance:
+  gdpr:
+    enabled: false
+    consent_required: false
+    
+  audit_log:
+    enabled: true
+    location: "logs/audit.log"
+    
+  data_classification: "internal"

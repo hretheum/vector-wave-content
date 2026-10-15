@@ -1,0 +1,122 @@
+# Vibe Coding POC - Git Ignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+*.egg-info/
+dist/
+build/
+
+# Virtual Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+coverage.json
+coverage.xml
+*.cover
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.project
+.pydevproject
+
+# Docker
+docker-compose.override.yml
+.dockerignore
+
+# Data & Results
+data/
+results/
+workspaces/
+assignments.json
+assignments.csv
+assignments.md
+participants/*.md
+poc_results.db
+*.sqlite
+*.db
+
+# Reports
+reports/
+dashboard.html
+report.html
+report.pdf
+analysis_report.txt
+*.png
+*.jpg
+*.svg
+
+# Logs
+logs/
+*.log
+audit.log
+
+# Sensitive Information
+*_api_key*
+*_secret*
+*_token*
+credentials/
+.credentials/
+secrets.yaml
+secrets.json
+
+# Participant Data
+participant_data/
+anonymized_data/
+survey_responses/
+
+# Temporary Files
+tmp/
+temp/
+scratch/
+.cache/
+*.tmp
+*.bak
+*.swp
+*.orig
+
+# OS Files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# Monitoring
+prometheus_data/
+grafana_data/
+jaeger_data/
+
+# Keep These
+!.gitkeep
+!requirements.txt
+!config.yaml.example
+!README.md
